@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ECharts 3</title>
+	<!-- 引入 ECharts 文件 -->
+    <script src="echarts.js"></script>
+</head>
+<body>
+	<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="width: 1000px;height:500px;"></div>
+    <script type="text/javascript">
+        
+        window.onload=function(){
+            $.get('world.json', function (worldJson) {
+            echarts.registerMap('world', worldJson);
+            var chart = echarts.init(document.getElementById('main'));
+            chart.setOption({
+                series: [{
+                    type: 'map',
+                    map: 'world'
+                }]
+            });
+        }); 
+        }
+    </script>
+</body>
+</html>
